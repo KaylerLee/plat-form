@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+<UIBreadCrumbsNavigationPortlet>
+    <label>
+        <ChangePicture>Changer la Photo</ChangePicture>
+    </label>
+</UIBreadCrumbsNavigationPortlet>
+   <UIBreadCrumbPopupAvatarUploader>
+      <title>
+         <UIAvatarUploader>Ajouter une Photo</UIAvatarUploader>
+         <UIAvatarUploadContent>Aperçu</UIAvatarUploadContent>
+      </title>
+   </UIBreadCrumbPopupAvatarUploader>
+</bundle>

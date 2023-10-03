@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+   <UIUserPlatformToolBarCreatePortlet>
+      <label>
+         <topic>Emne</topic>
+         <poll>Avstemning</poll>
+         <eventtask>Arrangement/aktivitet</eventtask>
+         <upload>Last opp en fil</upload>
+         <wiki>Wiki side</wiki>
+
+      </label>
+   </UIUserPlatformToolBarCreatePortlet>
+   <UICreateList>
+      <label>
+         <topic>Emne</topic>
+         <poll>Avstemning</poll>
+         <CreateANew>Opprett en ny {1}:</CreateANew>
+         <NoForum>Beklager, ingen forum er tilgjengelig ennå for å opprette en {1}. Start med å lage ditt eget fellesskap.</NoForum>
+         <RequireSelectForum>Velg et forum.</RequireSelectForum>
+      </label>
+      <action>
+         <Next>#{word.next}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateList>
+   <UICreateTopic>
+      <label>
+         <SelectAForum>Velg et Forum</SelectAForum>
+         <location>Plassering</location>
+         <forumId>Og Forum</forumId>
+         <FilterForums>Filtrer Forum</FilterForums>
+      </label>
+   </UICreateTopic>
+   <UICreatePoll>
+      <label>
+         <SelectAForum>Velg et Forum</SelectAForum>
+         <location>Plassering</location>
+         <forumId>Og Forum</forumId>
+         <FilterForums>Filtrer Forum</FilterForums>
+      </label>
+   </UICreatePoll>
+   <UICreateWiki>
+      <label>
+         <title>Opprett en ny Wiki side:</title>
+         <location>Plassering</location>
+      </label>
+   </UICreateWiki>
+   <UICreateEvent>
+      <label>
+         <Title>#{word.title}</Title>
+         <Choix>Legg til ny:</Choix>
+         <EndEvent>Til</EndEvent>
+         <StartEvent>Fra</StartEvent>
+         <Calendar>Velg kalender</Calendar>
+         <all-day>Hele dagen</all-day>
+         <defaultCalendarId>Standard</defaultCalendarId>
+      </label>
+      <msg>
+         <summary-field-required>Feltet "Tittel" er påkrevd.</summary-field-required>
+         <fromDate-format>Fra-dato er formatert feil.</fromDate-format>
+         <toDate-format>Til-dato er formatert feil.</toDate-format>
+         <logic-required>Beklager, kan ikke du opprette en hendelse som slutter før den starter.</logic-required>
+         <cant-add-event-on-remote-calendar>Du kan ikke legge til hendelser i en ekstern kalender</cant-add-event-on-remote-calendar>
+         <add-successfully>
+            <Event>Hendelsen ble lagt til {1}</Event>
+            <Task>Oppgaven ble lagt til {1}</Task>
+         </add-successfully>
+         <add-unsuccessfully>{0} ble ikke lagt til.</add-unsuccessfully>
+      </msg>
+      <action>
+         <Next>#{word.save}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateEvent>
+    <UIUploadFile>
+        <Select>Velg fil</Select>
+        <action>
+          <close>#{word.close}</close>
+        </action>
+    </UIUploadFile>
+   <Choix>
+      <label>
+         <Event>Hendelse</Event>
+         <Task>Oppgave</Task>
+      </label>
+   </Choix>
+</bundle>

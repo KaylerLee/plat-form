@@ -1,0 +1,131 @@
+<%
+    /**
+     * Copyright ( C ) 2012 eXo Platform SAS.
+     *
+     * This is free software; you can redistribute it and/or modify it
+     * under the terms of the GNU Lesser General Public License as
+     * published by the Free Software Foundation; either version 2.1 of
+     * the License, or (at your option) any later version.
+     *
+     * This software is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+     * Lesser General Public License for more details.
+     *
+     * You should have received a copy of the GNU Lesser General Public
+     * License along with this software; if not, write to the Free
+     * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+     * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+     */
+%>
+<%
+    import org.exoplatform.platform.welcomescreens.service.UnlockService;
+    import org.exoplatform.platform.welcomescreens.service.Utils;
+    import org.exoplatform.commons.utils.PropertyManager;
+    import org.exoplatform.portal.webui.util.Util;
+%>
+<%
+    boolean isUnlocked = UnlockService.isUnlocked();
+    if(!isUnlocked){
+        boolean isDevMode =  PropertyManager.isDevelopping();
+        if(!isDevMode){
+            def rday= UnlockService.getNbDaysBeforeExpiration();
+            boolean outdated = UnlockService.isOutdated();
+            String error = UnlockService.ERROR;
+%>
+
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+	.footerWLC {
+	    bottom: 0;
+	    color: #FFFFFF;
+	    font-weight: bold;
+	    left: 0;
+	    position: fixed;
+	    text-align: center;
+	    width: 100%;
+	    padding: 6px 0;
+	}
+	
+	
+	.footerWLC .btn {
+	    color: #333333;
+	    font-weight: bold;
+	    margin-left: 12px;
+	    cursor: pointer;
+	    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	    background-color: rgba(255, 255, 255, 0.3);
+	    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(180, 180, 180, 0.3));
+	    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.3)), to(rgba(180, 180, 180, 0.3)));
+	    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(180, 180, 180, 0.3));
+	    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(180, 180, 180, 0.3));
+	    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(180, 180, 180, 0.3));
+	    background-repeat: repeat-x;
+	    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(255, 255, 255, 0.3)', endColorstr='#ffe6e6e6', GradientType=0);
+	    *background-color: rgba(255, 255, 255, 0.3);
+	    /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+	
+	    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	    border: none;
+	    line-height: 16px;
+	    -webkit-border-radius: 4px;
+	    -moz-border-radius: 4px;
+	    border-radius: 4px;
+	    *margin-left: .3em;
+	    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	}
+	.footerWLC .btn:hover,
+	.footerWLC .btn:active {
+	    color: #2f5e92;
+	    background-position: center;
+	}
+	
+	.footerWLC.backOutdated{
+	    background: rgba(212, 0, 0, 0.4);
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#66d40000', endColorstr='#66d40000');
+	}
+	.footerWLC.backNotOutdated{
+	    background: rgba(0, 0, 0, 0.4);
+		filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#66d40000', endColorstr='#66d40000');
+	}
+	
+	.footerWLC > form {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	
+	.footerWLC > form button {
+		font-size: 13px;
+	}
+</style>
+
+<div id="<%=uicomponent.id%>">
+
+    <%
+            def css="backNotOutdated";
+            def label1= _ctx.appRes("UIWelcomeScreenFooter.label.trial");
+            def labelRemove=_ctx.appRes("UIWelcomeScreenFooter.label.subscription");
+
+            if (outdated)  {
+                css="backOutdated";
+                label1= _ctx.appRes("UIWelcomeScreenFooter.label.expiration");
+                rday = UnlockService.getNbDaysAfterExpiration();
+            }
+    %>
+    <div class="footerWLC <%=css  %>">
+        <form action="/trial/trial" >
+            <%if((error!=null)&&(!error.equals(""))){
+                css="backOutdated";%>
+               <%= error %>
+            <%} else{%>
+            <%=label1.replace('{1}', rday.toString()); %>
+            <%}%>
+            <button class="btn"><%= labelRemove %></button>
+        </form>
+    </div>
+</div>
+<%
+        }
+    }%>
+

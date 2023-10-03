@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+   <UIUserPlatformToolBarCreatePortlet>
+      <label>
+         <topic>Тема</topic>
+         <poll>Опрос</poll>
+         <eventtask>Событие/Задача</eventtask>
+         <upload>Загрузить файл</upload>
+         <wiki>Вики-страница</wiki>
+
+      </label>
+   </UIUserPlatformToolBarCreatePortlet>
+   <UICreateList>
+      <label>
+         <topic>тема</topic>
+         <poll>опрос</poll>
+         <CreateANew>Создать новый {1}:</CreateANew>
+         <NoForum>К сожалею, нет доступных форумов для создания {1}. Начните с создания собственного пространства.</NoForum>
+         <RequireSelectForum>Пожалуйста, выберите форум.</RequireSelectForum>
+      </label>
+      <action>
+         <Next>#{word.next}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateList>
+   <UICreateTopic>
+      <label>
+         <SelectAForum>Выберите форум</SelectAForum>
+         <location>В расположении</location>
+         <forumId>И форум</forumId>
+         <FilterForums>Фильтровать форумы</FilterForums>
+      </label>
+   </UICreateTopic>
+   <UICreatePoll>
+      <label>
+         <SelectAForum>Выбрать форум</SelectAForum>
+         <location>В расположении</location>
+         <forumId>И форум</forumId>
+         <FilterForums>Фильтровать форумы</FilterForums>
+      </label>
+   </UICreatePoll>
+   <UICreateWiki>
+      <label>
+         <title>Создать новую Вики-страницу:</title>
+         <location>В расположении</location>
+      </label>
+   </UICreateWiki>
+   <UICreateEvent>
+      <label>
+         <Title>#{word.title}</Title>
+         <Choix>Добавить новое:</Choix>
+         <EndEvent>До</EndEvent>
+         <StartEvent>С</StartEvent>
+         <Calendar>Выбрать календарь</Calendar>
+         <all-day>Весь день</all-day>
+         <defaultCalendarId>По умолчанию</defaultCalendarId>
+      </label>
+      <msg>
+         <summary-field-required>Поле "Заголовок" является обязательным.</summary-field-required>
+         <fromDate-format>Неверный формат дата в поле "С".</fromDate-format>
+         <toDate-format>Некорректный формат даты в поле "До".</toDate-format>
+         <logic-required>К сожалению нельзя создать событие, которое заканчивается до его начала.</logic-required>
+         <cant-add-event-on-remote-calendar>Нельзя добавить событие в удаленный календарь</cant-add-event-on-remote-calendar>
+         <add-successfully>
+            <Event>Событие было добавлено в {1}</Event>
+            <Task>Задача была добавлена в {1}</Task>
+         </add-successfully>
+         <add-unsuccessfully>{0} не было добавлено.</add-unsuccessfully>
+      </msg>
+      <action>
+         <Next>#{word.save}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateEvent>
+    <UIUploadFile>
+        <Select>Выбрать файл</Select>
+        <action>
+          <close>#{word.close}</close>
+        </action>
+    </UIUploadFile>
+   <Choix>
+      <label>
+         <Event>Событие</Event>
+         <Task>Задача</Task>
+      </label>
+   </Choix>
+</bundle>

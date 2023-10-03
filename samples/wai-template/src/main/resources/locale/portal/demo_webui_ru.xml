@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+  <Signin>
+    <welcome>Добро пожаловать</welcome>
+    <login>Авторизация</login>
+    <logout>Выйти</logout>
+    <language>
+      <en>Переключиться на английский язык</en>
+      <fr>Переключиться на французский язык</fr>
+    </language>
+    <register>Регистрация</register>
+  </Signin>
+  <Toolbar>
+    <SkipToContent>Перейти к контенту</SkipToContent>
+    <SiteMap>Карта сайта</SiteMap>
+    <Accessibility>Спец. возможности</Accessibility>
+    <NormalSize>Обычный размер</NormalSize>
+    <MediumSize>Средний размер</MediumSize>
+    <LargeSize>Большой размер</LargeSize>
+    <NormalContrast>Нормальная контрастность</NormalContrast>
+    <HighContrast>Высокая контрастность</HighContrast>
+    <Search>Поиск</Search>
+  </Toolbar>
+  <Logo>
+    <GoHome>Перейти на стартовую страницу</GoHome>
+  </Logo>
+  <acme>
+    <label>Шаблон АСМЕ</label>
+  </acme>  
+  <WAIPortal>
+    <label>Пример доступного веб-сайта</label>
+  </WAIPortal>
+</bundle>

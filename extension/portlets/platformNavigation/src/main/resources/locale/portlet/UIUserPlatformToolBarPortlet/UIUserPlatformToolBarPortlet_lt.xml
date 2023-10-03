@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+<UIUserPlatformToolBarPortlet>
+<label>
+<activities>Mano veiklos srautas</activities>
+<profile>Mano profilis</profile>
+<network>Mano jungtys</network>
+<wiki>Mano Wiki</wiki>
+<account>Nustatymai</account>
+<language>Pakeisti kalbą</language>
+<logout>Atsijungti</logout>
+        <dashboard>Mano prietaisų skydas</dashboard>
+</label>
+</UIUserPlatformToolBarPortlet>
+</bundle>

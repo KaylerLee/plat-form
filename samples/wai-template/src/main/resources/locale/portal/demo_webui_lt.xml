@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+  <Signin>
+    <welcome>Sveiki</welcome>
+    <login>Prisijungti</login>
+    <logout>Atsijungti</logout>
+    <language>
+      <en>Perjungti į anglų</en>
+      <fr>Perjungti į prancūzų</fr>
+    </language>
+    <register>Registruotis</register>
+  </Signin>
+  <Toolbar>
+    <SkipToContent>Praleisti į turinį</SkipToContent>
+    <SiteMap>Svetainės žemėlapis</SiteMap>
+    <Accessibility>Pritaikymas neįgaliesiems</Accessibility>
+    <NormalSize>Normalus dydis</NormalSize>
+    <MediumSize>Vidutinis dydis</MediumSize>
+    <LargeSize>Didelis dydis</LargeSize>
+    <NormalContrast>Normalus kontrastas</NormalContrast>
+    <HighContrast>Didelis kontrastas</HighContrast>
+    <Search>Ieškoti</Search>
+  </Toolbar>
+  <Logo>
+    <GoHome>Eiti į pradžią</GoHome>
+  </Logo>
+  <acme>
+    <label>ACME šablonas</label>
+  </acme>  
+  <WAIPortal>
+    <label>Pavyzdinė prieinama svetainė</label>
+  </WAIPortal>
+</bundle>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+  <Signin>
+    <welcome>Velkommen</welcome>
+    <login>Innlogging</login>
+    <logout>Logg ut</logout>
+    <language>
+      <en>Bytte til engelsk</en>
+      <fr>Bytte til fransk</fr>
+    </language>
+    <register>Registrer</register>
+  </Signin>
+  <Toolbar>
+    <SkipToContent>Hopp til innhold</SkipToContent>
+    <SiteMap>Nettstedskart</SiteMap>
+    <Accessibility>Tilgjengelighet</Accessibility>
+    <NormalSize>Normal størrelse</NormalSize>
+    <MediumSize>Medium størrelse</MediumSize>
+    <LargeSize>Stor størrelse</LargeSize>
+    <NormalContrast>Normal kontrast</NormalContrast>
+    <HighContrast>Høy kontrast</HighContrast>
+    <Search>Søk</Search>
+  </Toolbar>
+  <Logo>
+    <GoHome>Gå til startsiden</GoHome>
+  </Logo>
+  <acme>
+    <label>ACME mal</label>
+  </acme>  
+  <WAIPortal>
+    <label>Tilgjengelig eksempel nettsted</label>
+  </WAIPortal>
+</bundle>

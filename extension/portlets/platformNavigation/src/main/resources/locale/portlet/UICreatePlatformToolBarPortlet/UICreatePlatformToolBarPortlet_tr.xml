@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+   <UIUserPlatformToolBarCreatePortlet>
+      <label>
+         <topic>Konu</topic>
+         <poll>Anket</poll>
+         <eventtask>Etkinlik/Görev</eventtask>
+         <upload>Dosya Yükle</upload>
+         <wiki>Wiki Sayfası</wiki>
+
+      </label>
+   </UIUserPlatformToolBarCreatePortlet>
+   <UICreateList>
+      <label>
+         <topic>konu</topic>
+         <poll>anket</poll>
+         <CreateANew>Yeni bir {1} oluşturun:</CreateANew>
+         <NoForum>Üzgünüm, hiçbir forum bir {1} yaratmak için henüz kullanılabilir değil. Kendi panonuzda oluşturursunuz.</NoForum>
+         <RequireSelectForum>Lütfen bir forum seçin.</RequireSelectForum>
+      </label>
+      <action>
+         <Next>#{word.next}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateList>
+   <UICreateTopic>
+      <label>
+         <SelectAForum>Bir Forum seçin</SelectAForum>
+         <location>Konum</location>
+         <forumId>Ve Forum</forumId>
+         <FilterForums>Forumları Süz</FilterForums>
+      </label>
+   </UICreateTopic>
+   <UICreatePoll>
+      <label>
+         <SelectAForum>Forum Seçin</SelectAForum>
+         <location>Konum</location>
+         <forumId>Ve Forum</forumId>
+         <FilterForums>Forumları Süz</FilterForums>
+      </label>
+   </UICreatePoll>
+   <UICreateWiki>
+      <label>
+         <title>Yeni Wiki sayfası oluşturun:</title>
+         <location>Konum</location>
+      </label>
+   </UICreateWiki>
+   <UICreateEvent>
+      <label>
+         <Title>#{word.title}</Title>
+         <Choix>Yeni ekle:</Choix>
+         <EndEvent>Bitiş Tarihi</EndEvent>
+         <StartEvent>Başlangıç Tarihi</StartEvent>
+         <Calendar>Takvimi Seçin</Calendar>
+         <all-day>Tüm Gün</all-day>
+         <defaultCalendarId>Varsayılan</defaultCalendarId>
+      </label>
+      <msg>
+         <summary-field-required>"Başlık" alanı gereklidir.</summary-field-required>
+         <fromDate-format>"Başlangıç" tarihi biçimi doğru değil.</fromDate-format>
+         <toDate-format>"Bitiş" tarihi biçimi doğru değil.</toDate-format>
+         <logic-required>Üzgünüz, başlamadan biten bir etkinlik oluşturulamıyor.</logic-required>
+         <cant-add-event-on-remote-calendar>Uzaktan takvime olay eklenemiyor</cant-add-event-on-remote-calendar>
+         <add-successfully>
+            <Event>{1} için Etkinlik  eklendi</Event>
+            <Task>{1} için Görev eklendi</Task>
+         </add-successfully>
+         <add-unsuccessfully>{0} eklenemedi.</add-unsuccessfully>
+      </msg>
+      <action>
+         <Next>#{word.save}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateEvent>
+    <UIUploadFile>
+        <Select>Dosya Seçin</Select>
+        <action>
+          <close>#{word.close}</close>
+        </action>
+    </UIUploadFile>
+   <Choix>
+      <label>
+         <Event>Etkinlik</Event>
+         <Task>Görev</Task>
+      </label>
+   </Choix>
+</bundle>

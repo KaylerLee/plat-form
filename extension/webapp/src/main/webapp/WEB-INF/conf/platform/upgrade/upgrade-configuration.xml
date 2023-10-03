@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+   xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+
+	<component>
+		<type>org.exoplatform.commons.info.ProductInformations</type>
+		<init-params>
+			<value-param>
+				<name>product.versions.declaration.file</name>
+				<value>jar:/conf/platform.properties</value>
+			</value-param>
+		</init-params>
+	</component>
+
+   <external-component-plugins>
+      <target-component>org.exoplatform.commons.upgrade.UpgradeProductService</target-component>
+      <component-plugin>
+         <name>UpgradeProductInfoNodePlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeProductInfoNodePlugin</type>
+         <description>Remove any:read permission from node /Application Data/ProductInformationsService/productVersionDeclarationNode</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>UpgradeExoLoginHistoryHome</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeExoLoginHistoryHome</type>
+         <description>Remove any:read permission from node /exo:LoginHistoryHome</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>Upgrade-PortalData</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradePortalDataPlugin</type>
+         <description>Navigations Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>UpgradeNodeTypeSpaceAccessPlugin</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeNodeTypeSpaceAccessPlugin</type>
+         <description>eXo NodeType SpaceAccess Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin>
+         <name>Upgrade-Gadgets</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeLocalGadgetsPlugin</type>
+         <description>Gadgets Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>1</value>
+            </value-param>
+            <object-param>
+               <name>IDE</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>IDE</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/ide.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>ServicesManagement</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>ServicesManagement</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Management-and-Monitoring-gadgets/ServicesManagement/ServicesManagement.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>MemoryCharts</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>MemoryCharts</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Management-and-Monitoring-gadgets/Monitoring/Memory.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>CacheLevels</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>CacheLevels</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Management-and-Monitoring-gadgets/Monitoring/Caches.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>ApplicationsStatistics</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>ApplicationsStatistics</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Management-and-Monitoring-gadgets/Statistics/Applications.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>AllTemplateStatistics</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>AllTemplateStatistics</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Management-and-Monitoring-gadgets/Statistics/templates-all.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>LoginHistory</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>LoginHistory</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Audit-gadgets/LoginHistory/LoginHistory.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>FeaturedPoll</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>FeaturedPoll</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/FeaturedPoll/Poll.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>Bookmark</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>Bookmark</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/Bookmark/Bookmark.xml</string>
+                  </field>
+               </object>
+            </object-param>
+            <object-param>
+               <name>FavoriteDocument</name>
+               <object type="org.exoplatform.platform.upgrade.plugins.GadgetUpgrade">
+                  <field name="name">
+                     <string>FavoriteDocument</string>
+                  </field>
+                  <field name="path">
+                     <string>war:/gadgets/FavoriteDocument/FavoriteDocument.xml</string>
+                  </field>
+               </object>
+            </object-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-SpacesHomepage</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeSpaceHomePagePlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>2</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-GroupSiteLayout</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeGroupSiteLayoutPlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>3</value>
+            </value-param>
+            <value-param>
+               <name>group.site.template.name</name>
+               <description>Template groupe site name</description>
+               <value>group</value>
+            </value-param>
+            <value-param>
+               <name>group.site.template.location</name>
+               <description>Location of group site template</description>
+               <value>war:/conf/office-extension/portal</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+      <component-plugin profiles="all">
+         <name>Upgrade-UserSiteLayout</name>
+         <set-method>addUpgradePlugin</set-method>
+         <type>org.exoplatform.platform.upgrade.plugins.UpgradeUserSiteLayoutPlugin</type>
+         <description>Spaces Home page Upgrade Plugin</description>
+         <init-params>
+            <value-param>
+               <name>product.group.id</name>
+               <description>The groupId of the product</description>
+               <value>org.exoplatform.platform</value>
+            </value-param>
+            <value-param>
+               <name>plugin.execution.order</name>
+               <description>The plugin execution order</description>
+               <value>3</value>
+            </value-param>
+            <value-param>
+               <name>user.site.template.name</name>
+               <description>Template groupe site name</description>
+               <value>user</value>
+            </value-param>
+            <value-param>
+               <name>user.site.template.location</name>
+               <description>Location of group site template</description>
+               <value>war:/conf/office-extension/portal</value>
+            </value-param>
+         </init-params>
+      </component-plugin>
+   </external-component-plugins>
+   <!--
+  Not FOUND
+  TODO : FIX OR REMOVE
+	<external-component-plugins>
+		<target-component>org.exoplatform.commons.upgrade.UpgradeProductService</target-component>
+        <component-plugin>
+            <name>UpgradeNamespaceJosPlugin</name>
+            <set-method>addUpgradePlugin</set-method>
+            <type>org.exoplatform.platform.upgrade.plugins.UpgradeNamespaceJosPlugin</type>
+            <description>eXo Namespace Jos Upgrade Plugin</description>
+            <init-params>
+                <value-param>
+                    <name>product.group.id</name>
+                    <description>The groupId of the product</description>
+                    <value>org.exoplatform.platform</value>
+                </value-param>
+            </init-params>
+        </component-plugin>
+		<component-plugin>
+			<name>Upgrade-WCM-Contents</name>
+			<set-method>addUpgradePlugin</set-method>
+			<type>org.exoplatform.platform.upgrade.plugins.UpgradeContentPlugin</type>
+			<description>WCM Contents Upgrade Plugin</description>
+			<init-params>
+				<value-param>
+					<name>product.group.id</name>
+					<description>The groupId of the product</description>
+					<value>org.exoplatform.platform</value>
+				</value-param>
+				<value-param>
+					<name>plugin.execution.order</name>
+					<description>The plugin execution order</description>
+					<value>4</value>
+				</value-param>
+				<values-param>
+					<name>webapps-mames</name>
+					<description>webapps to upgrade</description>
+					<value>acme-intranet</value>
+					<value>acme-intranet-portlet</value>
+					<value>acme-website</value>
+					<value>acme-websiteResources</value>
+					<value>authoring-apps</value>
+					<value>calendar</value>
+					<value>chat</value>
+					<value>chatbar</value>
+					<value>cometd</value>
+					<value>commons-extension</value>
+					<value>CommonsResources</value>
+					<value>contact</value>
+					<value>content</value>
+					<value>crash</value>
+					<value>cs-extension</value>
+					<value>csResources</value>
+					<value>dashboard</value>
+					<value>default-website</value>
+					<value>ecm-wcm-core</value>
+					<value>ecm-wcm-extension</value>
+					<value>ecmadmin</value>
+					<value>ecmbrowsecontent</value>
+					<value>ecmexplorer</value>
+					<value>ecmworkflow-extension</value>
+					<value>exo-gadget-resources</value>
+					<value>exoadmin</value>
+					<value>eXoDMSGadgets</value>
+					<value>eXoDMSResources</value>
+					<value>eXoGadgets</value>
+					<value>eXoGadgetServer</value>
+					<value>eXoPlatformResources</value>
+					<value>eXoResources</value>
+					<value>eXoStaticResources</value>
+					<value>eXoWCMResources</value>
+					<value>eXoWorkflowResources</value>
+					<value>faq</value>
+					<value>fck</value>
+					<value>formgenerator</value>
+					<value>forum</value>
+					<value>gadget-pack</value>
+					<value>IDE</value>
+					<value>intranet-gadget</value>
+					<value>ks-extension</value>
+					<value>ksResources</value>
+					<value>mail</value>
+					<value>newsletter</value>
+					<value>platform-extension</value>
+					<value>platformNavigation</value>
+					<value>poll</value>
+					<value>portal</value>
+					<value>presentation</value>
+					<value>rest</value>
+					<value>searches</value>
+					<value>seo</value>
+					<value>SmartGWT</value>
+					<value>social</value>
+					<value>social-extension</value>
+					<value>social-portlet</value>
+					<value>social-resources</value>
+					<value>web</value>
+					<value>webos-ext</value>
+					<value>webosadmin</value>
+					<value>webosResources</value>
+					<value>wiki</value>
+					<value>workflow</value>
+				</values-param>
+			</init-params>
+		</component-plugin>
+		<component-plugin>
+			<name>Upgrade-Navigations</name>
+			<set-method>addUpgradePlugin</set-method>
+			<type>org.exoplatform.platform.upgrade.plugins.UpgradeNavigationPlugin</type>
+			<description>Navigations Upgrade Plugin</description>
+			<init-params>
+				<value-param>
+					<name>product.group.id</name>
+					<description>The groupId of the product</description>
+					<value>org.exoplatform.platform</value>
+				</value-param>
+				<value-param>
+					<name>plugin.execution.order</name>
+					<description>The plugin execution order</description>
+					<value>2</value>
+				</value-param>
+			</init-params>
+		</component-plugin>
+
+	</external-component-plugins>
+	-->
+</configuration>

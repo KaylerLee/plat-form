@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+<UIUserPlatformToolBarPortlet>
+<label>
+<activities>Etkinlik Akışım</activities>
+<profile>Profilim</profile>
+<network>Bağlantılarım</network>
+<wiki>Wikim</wiki>
+<account>Ayarlar</account>
+<language>Dili Değiştir</language>
+<logout>Oturumu Kapat</logout>
+        <dashboard>Panelim</dashboard>
+</label>
+</UIUserPlatformToolBarPortlet>
+</bundle>

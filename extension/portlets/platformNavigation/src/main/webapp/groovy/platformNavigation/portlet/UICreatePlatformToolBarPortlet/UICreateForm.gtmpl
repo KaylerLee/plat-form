@@ -1,0 +1,52 @@
+ <%
+     /**
+      * Copyright ( C ) 2012 eXo Platform SAS.
+      *
+      * This is free software; you can redistribute it and/or modify it
+      * under the terms of the GNU Lesser General Public License as
+      * published by the Free Software Foundation; either version 2.1 of
+      * the License, or (at your option) any later version.
+      *
+      * This software is distributed in the hope that it will be useful,
+      * but WITHOUT ANY WARRANTY; without even the implied warranty of
+      * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+      * Lesser General Public License for more details.
+      *
+      * You should have received a copy of the GNU Lesser General Public
+      * License along with this software; if not, write to the Free
+      * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+      * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+      */
+
+ %>
+<%
+import org.exoplatform.platform.component.UICreateList;
+import org.exoplatform.web.application.JavascriptManager;
+_ctx.getRequestContext().getJavascriptManager().require("SHARED/uiForm");
+%>
+<% uiform.begin()%>
+<div class="uiCreateForm" id="$uicomponent.id">
+
+	<div class="form-horizontal">
+			<h6><%=_ctx.appRes("UICreateWiki.label.title")%></h6>
+			<div class="control-group">
+				<label class="control-label" for="<%=_ctx.appRes("UICreateWiki.label.location")%>">
+					<%=_ctx.appRes("UICreateWiki.label.location")%>
+				</label>
+				<div class="controls">
+					<% uicomponent.renderChild(uicomponent.SPACE_SWITCHER);%>
+				</div>
+			</div>
+	</div>
+
+  <div class="uiAction uiActionBorder">
+  <% for(action in uicomponent.getActions()) {
+           String actionLabel = _ctx.appRes("UICreateList.action." + action);
+           String link = uicomponent.event(action) ;
+        %>
+       <button type="button" href="javascript:void(0);"  onclick="$link" class="btn">$actionLabel</button>
+      <%}%>
+    </div>
+
+</div>
+<%uiform.end()%>

@@ -1,0 +1,49 @@
+<%/*
+ * Copyright (C) 2012 eXo Platform SAS.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */ %>
+<%
+    import org.exoplatform.commons.utils.ExpressionUtil;
+    import org.exoplatform.web.application.RequestContext;
+%>
+<div class="UIGadgetThemes uiBox uiGettingStarted">
+    <h6 class="gadgetTitle title center">&{title.Label}<a onclick="" data-placement="bottom" rel="tooltip" title="&{close.Label}" class="uiIconClose pull-right"></a></h6>
+
+    <div class="listBlock">
+
+        <div id="progress-block" class="clearfix">
+            <div id="progress-shell" class="progress progessStart pull-left">
+                <div id="progress-rate" class="bar" style="width: ${width}px"></div>
+            </div>
+            <div id="progress-label" class="pull-left progessLabel"> ${progress} %</div>
+
+        </div>
+        <ul class ="gsList" id="gsList">
+            <li class="${status['gs_profile']}" ><a  target="_self" href=${profile} >&{Upload.label}</a></li>
+            <li class="${status['gs_connect']}" ><a  target="_self" href=${connect} >&{Connect.Label}</a></li>
+            <li class="${status['gs_space']}" ><a target="_self" href=${space} >&{Space.Label}</a></li>
+            <li class="${status['gs_activities']}" ><a target="_self" href=${activity} >&{Activity.Label} </a></li>
+            <li class="${status['gs_document']}" ><a target="_self" href=${upload}>&{Document.Label}</a></li>
+        </ul>
+
+    </div>
+    <%if(show=="false"){%>
+    <div class="center btnCompleteGetting" id="DeleteLink">
+        <button class="btn btn-small">&{close.Label}</button>
+    </div>
+    <%}%>
+</div>

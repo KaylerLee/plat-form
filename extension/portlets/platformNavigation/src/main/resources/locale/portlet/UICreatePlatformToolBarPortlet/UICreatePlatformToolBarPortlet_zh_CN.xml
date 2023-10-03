@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+   <UIUserPlatformToolBarCreatePortlet>
+      <label>
+         <topic>主题</topic>
+         <poll>投票</poll>
+         <eventtask>事件/任务</eventtask>
+         <upload>上传文件</upload>
+         <wiki>wiki页面</wiki>
+
+      </label>
+   </UIUserPlatformToolBarCreatePortlet>
+   <UICreateList>
+      <label>
+         <topic>主题</topic>
+         <poll>投票</poll>
+         <CreateANew>创建新 {1}：</CreateANew>
+         <NoForum>对不起，没有论坛，还可创建 {1}。首先创建你自己的空间。</NoForum>
+         <RequireSelectForum>请选择一个论坛。</RequireSelectForum>
+      </label>
+      <action>
+         <Next>#{word.next}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateList>
+   <UICreateTopic>
+      <label>
+         <SelectAForum>选择一个论坛</SelectAForum>
+         <location>中的位置</location>
+         <forumId>和论坛</forumId>
+         <FilterForums>筛选器论坛</FilterForums>
+      </label>
+   </UICreateTopic>
+   <UICreatePoll>
+      <label>
+         <SelectAForum>选择一个论坛</SelectAForum>
+         <location>中的位置</location>
+         <forumId>和论坛</forumId>
+         <FilterForums>筛选论坛</FilterForums>
+      </label>
+   </UICreatePoll>
+   <UICreateWiki>
+      <label>
+         <title>创建一个新的 Wiki 页面：</title>
+         <location>中的位置</location>
+      </label>
+   </UICreateWiki>
+   <UICreateEvent>
+      <label>
+         <Title>#{word.title}</Title>
+         <Choix>添加新地址:</Choix>
+         <EndEvent>到</EndEvent>
+         <StartEvent>从</StartEvent>
+         <Calendar>选择日历</Calendar>
+         <all-day>全天</all-day>
+         <defaultCalendarId>默认</defaultCalendarId>
+      </label>
+      <msg>
+         <summary-field-required>"标题"字段是必需的。</summary-field-required>
+         <fromDate-format>"从"日期格式不正确。</fromDate-format>
+         <toDate-format>"到"日期格式是不正确。</toDate-format>
+         <logic-required>对不起，您不能创建结束在开始之前的事件。</logic-required>
+         <cant-add-event-on-remote-calendar>您不能将事件添加到远程日历</cant-add-event-on-remote-calendar>
+         <add-successfully>
+            <Event>该事件被添加到 {1}</Event>
+            <Task>任务被添加到 {1}</Task>
+         </add-successfully>
+         <add-unsuccessfully>{0} 未添加。</add-unsuccessfully>
+      </msg>
+      <action>
+         <Next>#{word.save}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateEvent>
+    <UIUploadFile>
+        <Select>选择文件</Select>
+        <action>
+          <close>#{word.close}</close>
+        </action>
+    </UIUploadFile>
+   <Choix>
+      <label>
+         <Event>事件</Event>
+         <Task>任务</Task>
+      </label>
+   </Choix>
+</bundle>

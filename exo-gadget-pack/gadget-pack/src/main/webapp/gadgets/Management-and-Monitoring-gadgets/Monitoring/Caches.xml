@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Caches"
+  author="Frederic DROUET"
+  author_email="fdrouet@exoplatform.com"
+  height="1350"
+  thumbnail="/gadget-pack/skin/images/Monitoring/caches-icon_128x128.png"> 
+    <Require feature="settitle" />
+    <Require feature="dynamic-height" />
+    <Require feature="tabs" />
+    <Require feature="setprefs" />
+    <Locale messages="locale/default.xml" />
+    <Locale lang="fr" messages="locale/fr.xml" />
+    <Locale lang="es_ES" messages="locale/es_ES.xml" />
+    <Locale lang="vi" messages="locale/vi.xml" />
+    <Locale lang="sv_SE" messages="locale/sv_SE.xml"/>
+    <Locale lang="ja" messages="locale/ja.xml"/>
+    <Locale lang="ar" messages="locale/ar.xml"/>
+    <Locale lang="de" messages="locale/de.xml"/>
+    <Locale lang="pt_BR" messages="locale/pt_BR.xml"/>
+    <Locale lang="it" messages="locale/it.xml"/>
+    <Locale lang="ru" messages="locale/ru.xml"/>
+    <Locale lang="tr" messages="locale/tr.xml"/>
+    <Locale lang="zh_CN" messages="locale/zh_CN.xml"/>
+    <Locale lang="fi" messages="locale/fi.xml"/>
+    <Locale lang="lt" messages="locale/lt.xml"/>
+    <Locale lang="no" messages="locale/no.xml"/>
+    <Locale lang="zh_TW" messages="locale/zh_TW.xml"/>    
+    <Locale lang="cs" messages="locale/cs.xml"/>
+    <Locale lang="uk" messages="locale/uk.xml"/> 
+    <Locale lang="fa" messages="locale/fa.xml"/>
+    <Locale lang="el" messages="locale/el.xml"/> 
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[ 
+    <html>
+      <head>
+        <title>Caches</title>
+        <link rel="stylesheet" type="text/css" href="/exo-gadget-resources/skin/exo-gadget/gadget-common.css" />
+        <link rel="stylesheet" type="text/css" href="/eXoResources/skin/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="/eXoResources/skin/css/Core.css" />
+        
+        <style type="text/css">
+          
+          .cache_container_details {
+            margin: 10px 0;
+          }
+          
+          .cache_details {
+            margin: 0 0 20px 20px;
+          }
+          
+          .cache_label {
+            font-weight: bold;
+            margin-bottom: 0;
+          }  
+          
+          .detail_label {
+            background: url("/gadget-pack/skin/images/Monitoring/listItemIcon.png") no-repeat left 4px;
+            padding-left: 20px;
+          }
+          
+          .detail_ligne {
+            padding: 0 10px;
+            color: #5c5c5c;
+          }
+          
+          .detail_ligne:hover {
+            background: #ebebeb;
+            border-radius: 2px;
+          }
+          
+          .cacheLevel .cache {
+            margin: 10px 0;
+          }
+          
+          .cacheLevel .itemGraph {
+            margin-top: 5px;
+      border-radius: 2px;
+      overflow: hidden;
+          }
+          
+          .cacheLevel .graph {
+            background-color: #3370B4;
+            background-image: linear-gradient(to bottom, #3370b4, #2d629d);
+            border-radius: 0;
+            height: 18px;
+            overflow: hidden;
+            float: left;
+          }
+          
+          .cacheLevel .usedPercent {
+            background-color: #D30019;
+        background-image: linear-gradient(to bottom, #d30019, #b90016);
+            border-radius: 0;
+            height: 18px;
+            float: left;
+          }
+          
+          .cacheLevel .cache a b {
+            color: #333;
+          }
+          .cache_label a {
+            color: #333;
+          }
+          
+         .btn-group .btn {
+			background-color: #F9F9F9;
+		 }
+		
+		 .btn-group .btn.active {
+			color: #2F5E92;
+			background-color: #E6E6E6;
+		 }
+          
+        </style>
+        
+        <script language="javascript" type="text/javascript" src="/eXoResources/javascript/jquery-1.7.1.js"></script>
+        <script language="javascript" type="text/javascript" src="/exo-gadget-resources/script/jquery/plugins/jquery.timers/1.2/jquery.timers.js"></script>
+        <script language="javascript" type="text/javascript" src="/eXoResources/skin/bootstrap/js/bootstrap-button.js"></script>
+        <script language="javascript" type="text/javascript" src="/eXoResources/skin/bootstrap/js/bootstrap-tooltip.js"></script>
+        <script type="text/javascript">
+          /**
+          * Utility functions
+          */ 
+          String.prototype.fromCamel = function(){
+            return this.replace(/([A-Z])([a-z]+)/g, ' $1$2');
+          };
+          
+        </script>
+        
+        <script type="text/javascript">
+          function loadInfos() {
+            var itemsCachesConsumption = [];
+            var itemsCachesHit = [];
+            var itemsCachesDetails = [];
+            $.getJSON('/rest/monitoring/caches', function(data) {
+              $.each(data, function(i, liste) {
+                $.each(liste, function(key, cache) {
+                  var cacheId = cache.name;
+                  var cacheLabel = cacheId.substr(cacheId.lastIndexOf('.') + 1);
+                  var cacheTTL = cache.ttl;
+                  
+                  // ### Capacity
+                  var capacityUsedPercentage_rounded = Math.round(cache.capacityUsedPercentage);
+                  var capacityFreePercentage_rounded = Math.round(cache.capacityFreePercentage);
+                  
+                  if (capacityUsedPercentage_rounded + capacityFreePercentage_rounded > 100) {
+                    if (capacityUsedPercentage_rounded > capacityFreePercentage_rounded) {
+                      capacityUsedPercentage_rounded = capacityUsedPercentage_rounded-1;
+                    } else {
+                      capacityFreePercentage_rounded=capacityFreePercentage_rounded-1;
+                    }
+                  }
+                  
+                  itemsCachesConsumption.push('<div id="cache_consumption_'+cacheId+'" class="cache">');
+                  itemsCachesConsumption.push('<a data-placement="bottom" data-toggle="tooltip" href="javascript:void(0)" data-original-title="'+cacheId+'"><b>'+cacheLabel.fromCamel()+'</b></a>');
+                  itemsCachesConsumption.push('<div class="itemGraph clearfix">');
+                  itemsCachesConsumption.push('<div class="usedPercent" data-placement="bottom" data-toggle="tooltip" data-original-title="'+capacityUsedPercentage_rounded+'% __MSG_used__" style="width:'+capacityUsedPercentage_rounded+'%"> </div>');
+                  itemsCachesConsumption.push('<div class="graph" data-placement="bottom" data-toggle="tooltip" data-original-title="'+capacityFreePercentage_rounded+'% __MSG_free__" style="width:'+capacityFreePercentage_rounded+'%"> </div>');
+                  if (capacityUsedPercentage_rounded > 0 && capacityUsedPercentage_rounded < 100) {
+                      itemsCachesConsumption.push('<div class="slash" style="position: relative; left: '+capacityUsedPercentage_rounded+'%; top: 0; width: 1px; height: 18px; background: #fff; display: block; z-index: 2;"><span></span></div>');
+                  }
+                  itemsCachesConsumption.push('</div>');
+                  itemsCachesConsumption.push('</div>');
+                  
+                  // ### Hit & Miss ratios
+                  var ratioHitPercentage_rounded = Math.round(cache.hitCountPercentage);
+                  var ratioMissPercentage_rounded = Math.round(cache.missCountPercentage);
+                  if (ratioHitPercentage_rounded + ratioMissPercentage_rounded > 100) {
+                    if (ratioHitPercentage_rounded > ratioMissPercentage_rounded) {
+                      ratioHitPercentage_rounded = ratioHitPercentage_rounded-1;
+                    } else {
+                      ratioMissPercentage_rounded=ratioMissPercentage_rounded-1;
+                    }
+                  }
+                  
+                  itemsCachesHit.push('<div id="cache_hit_'+cacheId+'" class="cache">');
+                  itemsCachesHit.push('<a data-placement="bottom" data-toggle="tooltip" href="javascript:void(0)" data-original-title="'+cacheId+'"><b>'+cacheLabel.fromCamel()+'</b></a>');
+                  itemsCachesHit.push('<div class="itemGraph clearfix">');
+                  itemsCachesHit.push('<div class="usedPercent" data-placement="bottom" data-toggle="tooltip" data-original-title="'+ratioMissPercentage_rounded+'% __MSG_miss__" style="width:'+ratioMissPercentage_rounded+'%"> </div>');
+                  itemsCachesHit.push('<div class="graph" data-placement="bottom" data-toggle="tooltip" data-original-title="'+ratioHitPercentage_rounded+'% __MSG_hit__" style="width:'+ratioHitPercentage_rounded+'%"> </div>');
+                  if (ratioMissPercentage_rounded > 0 && ratioMissPercentage_rounded < 100) {
+                      itemsCachesHit.push('<div class="slash" style="position: relative; left: '+ratioMissPercentage_rounded+'%; top: 0; width: 1px; height: 18px; background: #fff; display: block; z-index: 2;"><span></span></div>');
+                  }
+                  itemsCachesHit.push('</div>');
+                  itemsCachesHit.push('</div>');
+                  
+                  // ### Caches Details
+                  itemsCachesDetails.push('<div id="cache_details_'+cacheId+'" class="cache_container cache_container_details">');
+                  itemsCachesDetails.push('<p class="cache_label">');
+                  itemsCachesDetails.push('<a data-placement="right" data-toggle="tooltip" href="javascript:void(0)" data-original-title="'+cacheId+'">'+cacheLabel.fromCamel()+'</a>');
+                  // do we have warning or error on Filled Ratio ?
+                  var fillRatioUsageCssClass = "";
+                  if (cache.capacityUsedPercentage >= 75 && cache.capacityUsedPercentage < 90) {
+                    fillRatioUsageCssClass = "usage_warning";
+                  } else if (cache.capacityUsedPercentage >= 90) {
+                    fillRatioUsageCssClass = "usage_error";
+                  } else {
+                    fillRatioUsageCssClass = "usage_ok";
+                  }
+                  itemsCachesDetails.push('<span class="detail_value pull-right" data-placement="bottom" data-toggle="tooltip" data-original-title="__MSG_used__ / __MSG_free__ = ' + cache.capacityUsed + ' / ' + cache.capacityFree + '">');
+                  itemsCachesDetails.push('<span class="'+fillRatioUsageCssClass+'">'+Math.round(cache.capacityUsedPercentage)+' %</span>');
+                  itemsCachesDetails.push('&nbsp;__MSG_full__</span>');
+                  itemsCachesDetails.push('</p>');
+                  itemsCachesDetails.push('<ul class="cache_details">');
+                  itemsCachesDetails.push('<li class="detail_ligne clearfix"><span class="detail_label">__MSG_max_size__ &nbsp;</span><span class="detail_value pull-right">'+cache.capacity+'</span></li>');
+                  itemsCachesDetails.push('<li class="detail_ligne clearfix"><span class="detail_label">__MSG_time_to_live__ &nbsp;</span><span class="detail_value pull-right">'+cache.ttl+'</span></li>');
+                  // do we have warning or error on Hit Ratio ?
+                  var hitRatioUsageCssClass = "";
+                  if (cache.missCountPercentage >= 75) {
+                    hitRatioUsageCssClass = "usage_error";
+                  } else if (cache.missCountPercentage >= 50) {
+                    hitRatioUsageCssClass = "usage_warning";
+                  } else {
+                    hitRatioUsageCssClass = "usage_ok";
+                  }
+                  itemsCachesDetails.push('<li class="detail_ligne clearfix">');
+                  itemsCachesDetails.push('<span class="detail_label">__MSG_hit__ / __MSG_miss__ &nbsp;</span>');
+                  itemsCachesDetails.push('<span class="detail_value pull-right" data-placement="bottom" data-toggle="tooltip" data-original-title="__MSG_hit__ / __MSG_miss__ = ' + cache.hitCount + ' / ' + cache.missCount + '"> ');
+                  itemsCachesDetails.push('<span class="'+hitRatioUsageCssClass+'">'+Math.round(cache.hitCountPercentage)+' %</span> / '+Math.round(cache.missCountPercentage)+' %</span>');
+                  itemsCachesDetails.push('</li>');
+                  itemsCachesDetails.push('</ul>');
+                  itemsCachesDetails.push('</div>');
+                });
+              });
+              
+              $('#caches-tab-consumption').empty();
+              $('<div/>', { html: itemsCachesConsumption.join('')}).appendTo('#caches-tab-consumption');
+              $('#caches-tab-hit').empty();
+              $('<div/>', { html: itemsCachesHit.join('')}).appendTo('#caches-tab-hit');
+              $('#caches-tab-details').empty();
+              $('<div/>', { html: itemsCachesDetails.join('')}).appendTo('#caches-tab-details');
+              
+              $('#caches-tab-consumption, #caches-tab-hit, #caches-tab-details').find('DIV,A,SPAN').filter('[data-toggle="tooltip"]').each(function(){
+                $(this).tooltip();
+              });
+              gadgets.window.adjustHeight($("#caches_gadget").get(0).offsetHeight);
+            });
+          }
+          
+          function init() {
+            loadInfos();
+            
+            $('Button#tab_consumption').click(function(){
+              $('#caches-tab-details, #caches-tab-hit').hide(); 
+              $('#caches-tab-consumption').show();
+              gadgets.window.adjustHeight($("#caches_gadget").get(0).offsetHeight);
+            });
+            
+            $('Button#tab_hitratio').click(function(){
+              $('#caches-tab-consumption, #caches-tab-details').hide();
+              $('#caches-tab-hit').show();
+              gadgets.window.adjustHeight($("#caches_gadget").get(0).offsetHeight);
+            });
+            
+            $('Button#tab_details').click(function(){
+              $('#caches-tab-consumption, #caches-tab-hit').hide();
+              $('#caches-tab-details').show();
+              gadgets.window.adjustHeight($("#caches_gadget").get(0).offsetHeight);
+            });
+            
+            $('Button#tab_consumption').trigger('click');  
+            
+            $(document).everyTime("60s", "reloadPage", function() {
+              loadInfos();
+            }, 0);
+          }
+          gadgets.util.registerOnLoadHandler(init);
+        </script>
+      </head>
+      <body>
+        
+        <div id="caches_gadget" class="UIGadgetThemes cacheLevel uiBox">
+          <h6 class="title center">
+            __MSG_title_caches__
+          </h6>
+          <div class="uiContentBox">
+            <div class="center">
+              <div class="btn-group clearfix" data-toggle="buttons-radio">
+                <button class="btn" type="button" id="tab_consumption">
+                  __MSG_consumption__
+                </button>
+                <button class="btn" type="button" id="tab_hitratio">
+                  __MSG_hit_ratio__
+                </button>
+                <button class="btn" type="button" id="tab_details">
+                  __MSG_details__
+                </button>
+              </div>
+            </div>
+            <div class="cacheCont">
+              <div id="caches-tab-consumption" class="templates">__MSG_loading__</div>
+              <div id="caches-tab-hit" class="templates">__MSG_loading__</div>
+              <div id="caches-tab-details" class="templates">__MSG_loading__</div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+    ]]>
+  </Content>
+</Module>
+
+

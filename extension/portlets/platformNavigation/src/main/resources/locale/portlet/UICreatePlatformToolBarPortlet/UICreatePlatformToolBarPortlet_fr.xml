@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+   <UIUserPlatformToolBarCreatePortlet>
+      <label>
+         <topic>Discussion</topic>
+         <poll>Sondage</poll>
+         <eventtask>Evénement/Tâche</eventtask>
+         <upload>Transférer un Fichier</upload>
+         <wiki>Page Wiki</wiki>
+
+      </label>
+   </UIUserPlatformToolBarCreatePortlet>
+   <UICreateList>
+      <label>
+         <topic>une discussion</topic>
+         <poll>un sondage</poll>
+         <CreateANew>Créer {1}:</CreateANew>
+         <NoForum>Désolé, aucun forum n'est disponible pour l'instant pour créer {1}. Essayez de créer votre propre espace.</NoForum>
+         <RequireSelectForum>Veuillez sélectionner un forum.</RequireSelectForum>
+      </label>
+      <action>
+         <Next>#{word.next}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateList>
+   <UICreateTopic>
+      <label>
+         <SelectAForum>Choisir un forum</SelectAForum>
+         <location>Dans</location>
+         <forumId>et Forum</forumId>
+         <FilterForums>Filtrer</FilterForums>
+      </label>
+   </UICreateTopic>
+   <UICreatePoll>
+      <label>
+         <SelectAForum>Choisir un Forum</SelectAForum>
+         <location>Dans</location>
+         <forumId>et Forum</forumId>
+         <FilterForums>Filtrer</FilterForums>
+      </label>
+   </UICreatePoll>
+   <UICreateWiki>
+      <label>
+         <title>Créer une page wiki:</title>
+         <location>Dans</location>
+      </label>
+   </UICreateWiki>
+   <UICreateEvent>
+      <label>
+         <Title>#{word.title}</Title>
+         <Choix>Ajouter:</Choix>
+         <EndEvent>à</EndEvent>
+         <StartEvent>de</StartEvent>
+         <Calendar>Calendrier</Calendar>
+         <all-day>Toute la journée</all-day>
+         <defaultCalendarId>Mon Calendrier</defaultCalendarId>
+      </label>
+      <msg>
+         <summary-field-required>Le champ "Titre" est obligatoire.</summary-field-required>
+         <fromDate-format>le format du date de debut est incorrect.</fromDate-format>
+         <toDate-format>le format du date de fin est incorrect.</toDate-format>
+         <logic-required>Désolé, vous ne pouvez pas créer un événement qui se termine avant qu'il ne commence.</logic-required>
+         <cant-add-event-on-remote-calendar>Impossible d'ajouter un événement au calendrier distant</cant-add-event-on-remote-calendar>
+         <add-successfully>
+            <Event>L’événement a été ajouté dans {1}.</Event>
+            <Task>La tâche a été ajoutée dans {1}.</Task>
+         </add-successfully>
+         <add-unsuccessfully>L'ajout de {0} a echoué.</add-unsuccessfully>
+      </msg>
+      <action>
+         <Next>#{word.save}</Next>
+         <Cancel>#{word.cancel}</Cancel>
+      </action>
+   </UICreateEvent>
+    <UIUploadFile>
+        <Select>Sélectionnez le Fichier</Select>
+        <action>
+          <close>#{word.close}</close>
+        </action>
+    </UIUploadFile>
+   <Choix>
+      <label>
+         <Event>Événement</Event>
+         <Task>Tâche</Task>
+      </label>
+   </Choix>
+</bundle>
