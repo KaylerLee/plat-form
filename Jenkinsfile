@@ -13,7 +13,7 @@ pipeline {
         // Where your Nexus is running
         NEXUS_URL = "10.97.72.168:8081"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "LoginWebApp"
+        NEXUS_REPOSITORY = "exo-artifacts"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexusCredential"
         ARTIFACT_VERSION = "${BUILD_NUMBER}"
@@ -24,7 +24,7 @@ pipeline {
         stage("Check out") {
             steps {
                 script {
-                    git branch: 'feature/nexusUpload', url: 'https://github.com/KaylerLee/nexus-test.git';
+                    git branch: 'master', url: 'https://github.com/KaylerLee/plat-form.git';
                 }
             }
         }
