@@ -45,9 +45,9 @@ pipeline {
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "***/target/*.jar");
                     // Print some info from the artifact found
-                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                    echo "${filesByGlob[3].name} ${filesByGlob[3].path} ${filesByGlob[3].directory} ${filesByGlob[3].length} ${filesByGlob[3].lastModified}"
                     // Extract the path from the File found
-                    artifactPath = filesByGlob[0].path;
+                    artifactPath = filesByGlob[3].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
 
