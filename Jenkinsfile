@@ -67,7 +67,7 @@ pipeline {
                                 [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: pom.packaging]
+                                type: pom.packaging,jar,war]
                             ]
                         );
 
