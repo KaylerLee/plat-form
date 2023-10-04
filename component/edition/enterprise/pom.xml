@@ -7,6 +7,6 @@
     <version>4.0.7</version>
   </parent>
   <artifactId>platform-component-edition-enterprise</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <name>eXo Platform - Enterprise Edition Information</name>
 </project>
