@@ -42,8 +42,10 @@ pipeline {
                 script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
+                    echo "${pom.packaging}";
                     // Find built artifact under target folder
-                    filesByGlob = findFiles(glob: "target/*.jar");
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    echo filesByGlob;
                     // Print some info from the artifact found
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     // Extract the path from the File found
@@ -52,7 +54,7 @@ pipeline {
                     artifactExists = fileExists artifactPath;
 
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: jar, version ${pom.version}";
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
 
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
@@ -67,7 +69,7 @@ pipeline {
                                 [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: jar]
+                                type: pom.packaging]
                             ]
                         );
 
