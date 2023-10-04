@@ -3,9 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>maven-parent-pom</artifactId>
-   <!-- updated -->
-    <packaging>pom</packaging>
-    <!-- updated -->
     <groupId>org.exoplatform</groupId>
     <version>12</version>
     <relativePath />
@@ -13,7 +10,6 @@
   <groupId>org.exoplatform.platform</groupId>
   <artifactId>platform</artifactId>
   <version>4.0.7</version>
-  <packaging>pom</packaging>
   <name>eXo Platform</name>
   <description>Parent POM for platform projects.</description>
   <modules>
