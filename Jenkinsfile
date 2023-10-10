@@ -44,12 +44,12 @@ pipeline {
                     pom = readMavenPom file: "pom.xml";
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "**/target/*.jar");
-
+                    echo "${filesByGlob.size()}";
                     // Print some info from the artifact found
 
                     for (int i = 0; i < filesByGlob.size(); i++) {
                      
-                    echo "${filesByGlob[i].name} ${filesByGlob[i].path} ${filesByGlob[i].directory} ${filesByGlob[i].length} ${filesByGlob[0].lastModified}"
+                    echo "${filesByGlob[i].name} ${filesByGlob[i].path} ${filesByGlob[i].directory} ${filesByGlob[i].length} ${filesByGlob[0].lastModified}";
                     // Extract the path from the File found
                     artifactPath = filesByGlob[i].path;
 
@@ -72,7 +72,7 @@ pipeline {
                                 [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: pom.packaging]
+                                type: jar]
                             ]
                         );
 
