@@ -44,10 +44,15 @@ pipeline {
                     pom = readMavenPom file: "pom.xml";
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "**/target/*.jar");
+
                     // Print some info from the artifact found
-                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+
+                    for (int i = 0; i < filesByGlob.size(); i++) {
+                     
+                    echo "${filesByGlob[i].name} ${filesByGlob[i].path} ${filesByGlob[i].directory} ${filesByGlob[i].length} ${filesByGlob[0].lastModified}"
                     // Extract the path from the File found
-                    artifactPath = filesByGlob[3].path;
+                    artifactPath = filesByGlob[i].path;
+
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
 
@@ -74,6 +79,7 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
+                }
                 }
             }
         }
