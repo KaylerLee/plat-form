@@ -45,7 +45,7 @@ pipeline {
                     // Read POM xml file using 'readMavenPom' step, this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "welcome-screens/webapp/pom.xml";
                     // Find built artifact under target folder
-                    filesByGlob = findFiles(glob: "${pom.packaging}");
+                    filesByGlob = findFiles(glob: "**/target/*.jar");
                     echo "${filesByGlob.size()}";
                     // Print some info from the artifact found
 
