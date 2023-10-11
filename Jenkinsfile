@@ -36,11 +36,12 @@ pipeline {
                 script {
                     sh "mvn clean package -DskipTests=true"
                 }
-            post{
+             post{
                 success{
                     echo "Archiving the Artifacts"
-                    archiveArtifacts artifacts: '**/target/*.war'
+                    archiveArtifacts artifacts: '**/target/*.jar'
                 }
+            }   
             }
         }
 
@@ -92,5 +93,4 @@ pipeline {
         }
       
     }
-}
 }
