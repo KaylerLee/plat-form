@@ -75,7 +75,7 @@ pipeline {
 
                                 [artifactId: pom.artifactId,
                                 classifier: '',
-                                file: "pom.xml",
+                                file: "*/*/*/target/*.jar",
                                 type: "pom"]
                             ]
                         );
