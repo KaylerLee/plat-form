@@ -74,7 +74,7 @@ pipeline {
                                 [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: 'fuck']
+                                type: pom.packaging]
                             ]
                         );
 
