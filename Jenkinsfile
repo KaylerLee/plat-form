@@ -75,7 +75,7 @@ pipeline {
 
                                 [artifactId: pom.artifactId,
                                 classifier: '',
-                                file: "*/*/*/target/*.jar",
+                                file: filesByGlob,
                                 type: "pom"]
                             ]
                         );
