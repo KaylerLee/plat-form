@@ -53,7 +53,7 @@ pipeline {
                      
                     echo "${filesByGlob[i].name} ${filesByGlob[i].path} ${filesByGlob[i].directory} ${filesByGlob[i].length} ${filesByGlob[i].lastModified}";
                     // Extract the path from the File found
-                    artifactPath = filesByGlob[3].path;
+                    artifactPath = filesByGlob[i].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
