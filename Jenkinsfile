@@ -34,7 +34,7 @@ pipeline {
         stage("mvn clean install -DskipTests=true") {
             steps {
                 script {
-                    sh "mvn clean deploy -DskipTests=true"
+                    sh "mvn -e -X clean install -DskipTests=true"
                 }   
             }
 
