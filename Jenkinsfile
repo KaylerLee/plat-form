@@ -39,13 +39,13 @@ pipeline {
             }
 
 
-            // post{
-            //     success{
+            post{
+                success{
 
-            //         echo "Archiving the Artifacts"
-            //         archiveArtifacts artifacts: '**/target/*.war'
-            //     }
-            // }    
+                    echo "Archiving the Artifacts"
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }    
 
 
 
