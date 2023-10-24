@@ -31,12 +31,24 @@ pipeline {
             }
         }
 
-        stage("mvn clean install -DskipTests=true") {
+        stage("mvn clean compile install -DskipTests=true") {
             steps {
                 script {
-                    sh "mvn clean package -DskipTests=true"
+                    sh "mvn clean compile package -DskipTests=true"
                 }   
             }
+
+
+            post{
+                success{
+
+                    echo "Archiving the Artifacts"
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }    
+
+
+
         }
 
          stage("publish to nexus") {
@@ -45,7 +57,7 @@ pipeline {
                     // Read POM xml file using 'readMavenPom' step, this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
                     // Find built artifact under target folder
-                   filesByGlob = findFiles(glob: "*/*/*/target/*.jar");
+                   filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob.size()}";
                     // Print some info from the artifact found
 
@@ -67,16 +79,11 @@ pipeline {
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
-                                // Artifact generated such as .jar, .ear and .war files.
-                              //  [artifactId: pom.artifactId,
-                              //  classifier: '',
-                              //  file: artifactPath,
-                              //  type: pom.packaging]
-
-                                [artifactId: pom.artifactId,
-                                classifier: '',
-                                file: filesByGlob,
-                                type: "pom"]
+                            // Artifact generated such as .jar, .ear and .war files.
+                             [artifactId: pom.artifactId,
+                             classifier: '',
+                             file: artifactPath,
+                             type: pom.packaging]
                             ]
                         );
 
