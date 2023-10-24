@@ -34,18 +34,18 @@ pipeline {
         stage("mvn clean compile install -DskipTests=true") {
             steps {
                 script {
-                    sh "mvn clean compile package -DskipTests=true"
+                    sh "mvn clean compile install -DskipTests=true"
                 }   
             }
 
 
-            post{
-                success{
+            // post{
+            //     success{
 
-                    echo "Archiving the Artifacts"
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
-            }    
+            //         echo "Archiving the Artifacts"
+            //         archiveArtifacts artifacts: '**/target/*.war'
+            //     }
+            // }    
 
 
 
@@ -59,13 +59,13 @@ pipeline {
                     // Find built artifact under target folder
                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob.size()}";
-                    // Print some info from the artifact found
 
-                    for (int i = 0; i < filesByGlob.size(); i++) {
+                    // Print some info from the artifact found
+                    //for (int i = 0; i < filesByGlob.size(); i++) {
                      
-                    echo "${filesByGlob[i].name} ${filesByGlob[i].path} ${filesByGlob[i].directory} ${filesByGlob[i].length} ${filesByGlob[i].lastModified}";
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}";
                     // Extract the path from the File found
-                    artifactPath = filesByGlob[i].path;
+                    artifactPath = filesByGlob[0].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
@@ -90,7 +90,7 @@ pipeline {
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
-                }
+              //  }
                 }
                 }
             }
