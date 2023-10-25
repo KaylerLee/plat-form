@@ -696,6 +696,11 @@
       </pluginRepositories>
 
 
+
+
+
+    </profile>
+  </profiles>
         <distributionManagement>
 <!-- 
      <repository>
@@ -705,14 +710,10 @@
       </repository> -->
 
        <snapshotRepository>
-          <id>nexus-snapshots</id>
+          <id>nexus-snapshots-exo</id>
          <url>http://10.97.72.168:8081/repository/exo-artifacts/</url>
        </snapshotRepository>
 
-       </distributionManagement>
+      </distributionManagement>
 
-
-       
-    </profile>
-  </profiles>
 </project>
